@@ -1,3 +1,4 @@
+#pragma once
 #ifndef PGM3D_HPP
 #define PGM3D_HPP
 

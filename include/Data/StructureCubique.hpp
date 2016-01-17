@@ -1,3 +1,4 @@
+#pragma once
 #ifndef STRUCTURE_CUBIQUE_HPP
 #define STRUCTURE_CUBIQUE_HPP
 
@@ -61,6 +62,8 @@ protected:
 					//tableau de z vers x. lorsque boucle, favoriser les x mouvants
 	
 }; 
+
+#include "../../src/Data/StructureCubique.tpp"
 
 /*
  *Classe d'exception pour les pb de mémoire

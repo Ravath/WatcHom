@@ -1,3 +1,4 @@
+#pragma once
 #ifndef COMPLEXE_CUBIQUE_HPP
 #define COMPLEXE_CUBIQUE_HPP
 

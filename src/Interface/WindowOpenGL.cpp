@@ -2,8 +2,7 @@
 
 #include "SFML\Window.hpp"
 
-#include "Engine\Controlleur.hpp"
-#include "Engine\trackball.h"
+#include "Engine\Controlleur2.hpp"
 #include "GL\freeglut.h"
 
 using namespace std;
@@ -65,7 +64,7 @@ void WindowOpenGL::run() {
 //******************************
 
 void WindowOpenGL::drawOpenGL(sf::Window &window) {
-	Controlleur::get()->drawGL();
+	Controlleur2::get()->drawGL();
 }
 
 //******************************
@@ -85,7 +84,7 @@ sfg::Window::Ptr WindowOpenGL::initMenuWindow() {
 	//linker boutton charger
 	gbl_menu->getButton("Ouvrir Obj")->GetSignal(sfg::Window::OnMouseLeftPress).Connect(
 		std::bind([=]() {
-		Controlleur::get()->loadObj("fertility100_11_V.obj");
+		Controlleur2::get()->loadObj("fertility100_11_V.obj");
 	}));
 	return window;
 }
