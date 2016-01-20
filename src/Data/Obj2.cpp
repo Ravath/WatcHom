@@ -85,21 +85,23 @@ void Obj2::load(std::string const& path) {
 	while (!file.eof()) {
 		cptr++;
 		file >> work;//premier mot de la ligne
+		//cas face
 		if (work == "f") {//on ne désespère pas. un jour on pourra switcher sur des strings. ptt.
 			if (currentObject == nullptr) throw FileError(1,"Error in OBJ load : \n\tface before first object at line " + to_string(cptr));
 			getline(file, work); 
 			currentObject->addFace(parseFace(work));
-		}
+		}//cas vertice
 		else if (work == "v") {
 			getline(file, work);
 			addVertex(parseVertex(work));
-		}
+		}//cas objet
 		else if (work == "o") {
 			file >> work;
-			if (currentObject != nullptr)
+			if (currentObject != nullptr) {
+				currentObject->setDimension((currentObject->nbrFaces() == 6) ? 0 : 1);
 				addObject(*currentObject);
-			currentObject = new Object(work);
-		}
+			}currentObject = new Object(work, 1);
+		}//cas commentaire
 		else if (work == "#") {
 			std::getline(file, work);//sauter la ligne
 		}
@@ -108,6 +110,7 @@ void Obj2::load(std::string const& path) {
 				throw FileError(2,"Error in OBJ load : \n\tcant't read the caracter " + work + " at line " + to_string(cptr));
 		}
 	}
+	currentObject->setDimension((currentObject->nbrFaces() == 6) ? 0 : 1);
 	if (currentObject != nullptr)//add the last object
 		addObject(*currentObject);
 }

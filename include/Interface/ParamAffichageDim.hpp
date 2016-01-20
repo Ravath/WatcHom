@@ -21,7 +21,7 @@ public:
 	float getBlue();
 	float getGreen();
 	float getAlpha();
-	int getDimenssion();
+	int getDimension();
 private:
 	int dimension;
 	std::map<std::string, sfg::Scale::Ptr> scalers;//curseurs mapés par leur nom

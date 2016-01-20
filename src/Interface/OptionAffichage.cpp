@@ -1,4 +1,3 @@
-
 #include "Interface\OptionAffichage.hpp"
 #include "Interface\ParamAffichageDim.hpp"
 

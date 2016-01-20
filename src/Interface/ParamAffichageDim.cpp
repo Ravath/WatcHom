@@ -1,5 +1,6 @@
 #include "Interface\ParamAffichageDim.hpp"
-#include "SFGUI\Label.hpp"
+#include "Engine\Controlleur2.hpp"
+#include "SFGUI\Widgets.hpp"
 
 using namespace sfg;
 using namespace std;
@@ -14,6 +15,12 @@ ParamAffichageDim::ParamAffichageDim(int dim) : Frame()
 		hBox->Pack(it->second);
 	}
 	scalers.at("Alpha")->SetValue(255);
+	OnMouseLeftRelease;
+
+	GetSignal(sfg::Button::OnMouseLeftRelease).Connect(
+		std::bind([=]() {
+		Controlleur2::get()->setCouleur(Controlleur2::int2Dim(dimension), getRed(), getGreen(), getBlue(), getAlpha());
+	}));
 }
 
 ParamAffichageDim::~ParamAffichageDim()
@@ -36,7 +43,7 @@ float ParamAffichageDim::getGreen() {
 float ParamAffichageDim::getAlpha() {
 	return scalers.at("Alpha")->GetValue();
 }
-int ParamAffichageDim::getDimenssion() {
+int ParamAffichageDim::getDimension() {
 	return dimension;
 }
 
@@ -49,6 +56,7 @@ void ParamAffichageDim::initScales() {
 	for (string lab : labels) {
 		scalers.insert(pair<string, Scale::Ptr>(lab, Scale::Create(0, 255, 1)));
 		scalers.at(lab)->SetValue(100);
+		
 	}
 }
 

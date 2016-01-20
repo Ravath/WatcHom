@@ -3,7 +3,6 @@
 #include "SFML\Window.hpp"
 
 #include "Engine\Controlleur2.hpp"
-#include "GL\freeglut.h"
 
 using namespace std;
 using namespace sfg;
